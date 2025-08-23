@@ -140,14 +140,18 @@ La primera gráfica, que es la del DAQ, muestra la señal más dispersa y cargad
 
 
 ### Parte C:
-La **Relación Señal-Ruido (SNR)** es una medida fundamental en el análisis de señales. Indica cuán fuerte es una señal en comparación con el ruido de fondo que la acompaña, y permite evaluar qué tan clara o distinguible resulta frente a las interferencias que pueden distorsionarla.
+La **Relación Señal-Ruido (SNR)** es una medida fundamental en el análisis de señales. Indica cuán fuerte es una señal en comparación con el ruido de fondo que la acompaña, y permite evaluar qué tan clara o distinguible resulta frente a las interferencias que pueden distorsionarla.  
+
 ```math
-SNR = Potencia de la señal / Potencia del ruido
+SNR = Potenciaseñal / Potenciaruido
 ```
-Pero como esta relación se expresa en decibelios (dB) la expresión queda como:
+
+Pero como esta relación se expresa en decibelios (dB) la expresión queda como:  
+
 ```math
-SNR_dB = (10 · log10(Potencia de la señal / Potencia del ruido))
+SNR_dB = (10 · log10(Potenciaseñal / Potenciaruido))
 ```
+
 Un SNR alto indica que la señal es fuerte y clara respecto al ruido, lo que facilita su análisis, transmisión o interpretación. Por el contrario, un SNR bajo sugiere que el ruido interfiere significativamente, dificultando la detección de patrones o eventos relevantes.
 
 **a. Contaminar la señal con ruido gaussiano y medir el SNR**
@@ -180,7 +184,7 @@ SNR real de la señal con ruido: 10.05 dB
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/9197a065-4b45-4fcf-9ec0-0dbe6b9580d2" />
 La simulación de ruido gaussiano permite modelar interferencias realistas en señales biomédicas como el ECG, facilitando el estudio de su impacto sobre la calidad de la señal. También permite ver como un ECG se ve afectado por interferencias en un entorno clínico o experimental
 
-**b. Contaminar la señal con ruido impulso y medir el SNR**
+**b. Contaminar la señal con ruido impulso y medir el SNR**  
 El ruido impulso es una interferencia compuesta por picos breves y de alta intensidad que aparecen de forma repentina en una señal. A diferencia del ruido gaussiano, no es continuo ni predecible, y puede distorsionar gravemente puntos específicos de la señal. Este tipo de ruido es común en entornos con interferencias electromagnéticas y puede ser particularmente problemático porque introduce distorsiones significativas en la señal.
 
 
@@ -211,8 +215,7 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/6538bc69-37b1-4015-86d2-097534f1ddbe" />
 
 
-**c. Contaminar la señal con ruido tipo artefacto y medir el SNR**
-
+**c.Contaminar la señal con ruido artefacto y medir el SNR**  
      frecuencia_interferencia = 60
      amplitud_interferencia = (np.max(senal) - np.min(senal)) * 0.1 
      interferencia_linea_potencia = amplitud_interferencia * np.sin(2 * np.pi * frecuencia_interferencia * tiempo)
