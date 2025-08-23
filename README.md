@@ -66,7 +66,7 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
     print(f"  Rango: {rango:.4f}")
     print(f"  Coeficiente de Variación: {coeficiente_variacion:.4f}%")
 
-Estadísticas Descriptivas de la Señal:
+Datos estadisticos de la parte B adquiridos con el DAQ:
 
   Media: -1.2833
   
@@ -80,10 +80,14 @@ Estadísticas Descriptivas de la Señal:
   
   Coeficiente de Variación: 49.0944%
 
+Datos estadisticos de la parte A adquiridos por funciones: 
 
   Media: -0.014106341399538005
+  
 Desviacion estandar: 0.18098538862422828
+
 Coeficiente de variacion (REVISAR): 1283.007290821387
+
 Curtosis calculada con SciPy: 19.1574
 
 
