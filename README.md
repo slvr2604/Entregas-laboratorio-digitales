@@ -66,7 +66,7 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
     print(f"  Rango: {rango:.4f}")
     print(f"  Coeficiente de Variación: {coeficiente_variacion:.4f}%")
 
-##Datos estadisticos de la parte B adquiridos con el DAQ:
+## Datos estadisticos de la parte B adquiridos con el DAQ:
 
   Media: -1.2833
   
@@ -80,7 +80,7 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
   
   Coeficiente de Variación: 49.0944%
 
-##Datos estadisticos de la parte A adquiridos por funciones:
+## Datos estadisticos de la parte A adquiridos por funciones:
 
   Media: -0.014106341399538005
   
