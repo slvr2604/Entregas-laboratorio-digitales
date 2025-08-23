@@ -67,11 +67,17 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
     print(f"  Coeficiente de Variación: {coeficiente_variacion:.4f}%")
 
 Estadísticas Descriptivas de la Señal:
+
   Media: -1.2833
+  
   Desviación Estándar: 0.6300
+  
   Valor Mínimo: -2.3909
+  
   Valor Máximo: 2.4551
+  
   Rango: 4.8460
+  
   Coeficiente de Variación: 49.0944%
 
 
