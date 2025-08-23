@@ -90,4 +90,9 @@ Coeficiente de variacion (REVISAR): 1283.007290821387
 
 Curtosis calculada con SciPy: 19.1574
 
+En la parte B con el DAQ se ve que la señal es más amplia y con más variación en los valores. En cambio, en la parte A, al generarla con funciones, la señal sale más ajustada alrededor de cero, pero con picos muy marcados que hacen que los datos se concentren más en ciertos puntos. Esto muestra que la señal real tiene un comportamiento más extendido, mientras que la generada se ve más limitada pero con valores extremos.
+
+
+
+
 
