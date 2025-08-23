@@ -46,3 +46,32 @@ El código carga un archivo de texto que contiene los datos de la señal adquiri
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/ad34853e-3d75-43e0-8770-55b782b5b61c" />
 La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó en Python. En el eje del tiempo se ve desde 0 hasta 0.1 segundos y en el eje vertical la amplitud en mV. Se notan picos que se repiten de manera clara, lo que confirma que el código cargó bien los datos y que la gráfica permite visualizar la señal de forma ordenada.
 
+
+    media = np.mean(senal)
+    desviacion_estandar = np.std(senal)
+    min_valor = np.min(senal)
+    max_valor = np.max(senal)
+    rango = max_valor - min_valor
+
+    if media != 0:
+    coeficiente_variacion = (desviacion_estandar / abs(media)) * 100
+    else:
+    coeficiente_variacion = float('inf') 
+
+    print(f"Estadísticas Descriptivas de la Señal:")
+    print(f"  Media: {media:.4f}")
+    print(f"  Desviación Estándar: {desviacion_estandar:.4f}")
+    print(f"  Valor Mínimo: {min_valor:.4f}")
+    print(f"  Valor Máximo: {max_valor:.4f}")
+    print(f"  Rango: {rango:.4f}")
+    print(f"  Coeficiente de Variación: {coeficiente_variacion:.4f}%")
+
+Estadísticas Descriptivas de la Señal:
+  Media: -1.2833
+  Desviación Estándar: 0.6300
+  Valor Mínimo: -2.3909
+  Valor Máximo: 2.4551
+  Rango: 4.8460
+  Coeficiente de Variación: 49.0944%
+
+
