@@ -72,9 +72,13 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
     curt = kurtosis(senal)
     print(f"Curtosis de la señal: {curt:.4f}")
 En este apartado se calcularon estadísticas importantes de la señal.
+
 La **media** muestra el valor promedio, sirviendo como referencia de la tendencia central de los datos.
+
 La **desviación estándar** refleja qué tanto se alejan los valores respecto al promedio; si es grande significa que hay más variación.
+
 El **coeficiente de variación** relaciona la desviación estándar con la media y es útil para comparar la variabilidad entre señales de distinta escala.
+
 La **curtosis** mide qué tan “picuda” o plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.
 
 
