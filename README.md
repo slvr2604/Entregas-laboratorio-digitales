@@ -208,7 +208,7 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
     print(f"SNR real de la señal con ruido de impulso: {snr_real_impulso_db:.2f} dB")  
     SNR real de la señal con ruido de impulso: 9.28 dB
     
-    <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/c7bc2700-9e3e-4e52-95be-c0ecd921c086" />
+<img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/6538bc69-37b1-4015-86d2-097534f1ddbe" />
 
 
 **c. Contaminar la señal con ruido tipo artefacto y medir el SNR**
@@ -229,7 +229,8 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
      print(f"SNR real de la señal con interferencia: {snr_real_interferencia_db:.2f} dB")
      else:
      print("No se añadió ruido de interferencia (la potencia del ruido es cero). El SNR es infinito.")   
-     SNR real de la señal con interferencia: 12.41 dB
+     SNR real de la señal con interferencia: 12.41 dB  
+     
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/71fa1c0a-dafd-4669-b22e-4f897b617e42" />
 
 
