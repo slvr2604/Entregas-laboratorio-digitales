@@ -11,3 +11,4 @@ La señal es la siguiente:
 
 
 ### Parte B:
+Para esta parte s realizo la adquisicion de una señal real utilizando la tarjeta *NI DAQ* conectada 
