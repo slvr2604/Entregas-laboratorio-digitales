@@ -215,7 +215,8 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/6538bc69-37b1-4015-86d2-097534f1ddbe" />
 
 
-**c.Contaminar la señal con ruido artefacto y medir el SNR**  
+**c.Contaminar la señal con ruido artefacto y medir el SNR**   
+
      frecuencia_interferencia = 60
      amplitud_interferencia = (np.max(senal) - np.min(senal)) * 0.1 
      interferencia_linea_potencia = amplitud_interferencia * np.sin(2 * np.pi * frecuencia_interferencia * tiempo)
