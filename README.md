@@ -10,3 +10,4 @@ Se utilizó la base de datos "Physionet" para adquirir una señal fisiológica, 
 La señal es la siguiente:
 
 
+### Parte B:
