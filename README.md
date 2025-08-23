@@ -112,6 +112,18 @@ En la parte B con el DAQ se ve que la señal es más amplia y con más variació
 La gráfica muestra la función de probabilidad de la señal obtenida. Aquí se puede ver cómo se distribuyen los valores de amplitud, es decir, qué tan seguido aparecen ciertos valores dentro de la señal. Esto permite identificar si los datos se concentran más en un rango específico o si están más dispersos.
 
 <img width="988" height="393" alt="image" src="https://github.com/user-attachments/assets/ea953cc5-9eca-4a61-8ef5-69ba1b7f007a" />  <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/f9bffa09-c2d0-446f-9dae-22cea307781f" />
+La gráfica de la parte B muestra que la mayoría de valores de la señal se concentran cerca de -1 mV con un pico bien definido, mientras que en la parte A los datos se agrupan más alrededor de 0 mV y con una forma menos simétrica. Esto refleja que aunque ambas señales tienen concentraciones marcadas, el comportamiento de la adquirida con el DAQ es distinto al de la generada por funciones.
+
+    # Histograma
+    plt.figure(figsize=(12, 4))
+    plt.hist(senal, bins=50, edgecolor='black')
+    plt.title('Histograma de la Señal')
+    plt.xlabel('Amplitud (mV)')
+    plt.ylabel('Frecuencia')
+    plt.grid(True)
+    plt.show()
+El histograma muestra la frecuencia con la que aparecen los valores de amplitud en la señal, permitiendo identificar en qué rangos se concentran más los datos y cómo se distribuyen a lo largo de la señal.
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/2ffc5d41-adc7-4b37-aae4-5625f9188db4" />   <img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/522e1a86-58a0-43b6-a406-f01b2ffe29d0" />
 
 
 
