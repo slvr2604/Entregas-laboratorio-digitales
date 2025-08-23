@@ -100,7 +100,18 @@ Curtosis calculada con SciPy: 19.1574
 
 En la parte B con el DAQ se ve que la señal es más amplia y con más variación en los valores. En cambio, en la parte A, al generarla con funciones, la señal sale más ajustada alrededor de cero, pero con picos muy marcados que hacen que los datos se concentren más en ciertos puntos. Esto muestra que la señal real tiene un comportamiento más extendido, mientras que la generada se ve más limitada pero con valores extremos.
 
+    # Función de Probabilidad (usando histograma con density=True)
+    plt.figure(figsize=(12, 4))
+    plt.hist(senal, bins=50, density=True, edgecolor='black')
+    plt.title('Función de Probabilidad de la Señal')
+    plt.xlabel('Amplitud (mV)')
+    plt.ylabel('Densidad de Probabilidad')
+    plt.grid(True)
+    plt.show()
 
+La gráfica muestra la función de probabilidad de la señal obtenida. Aquí se puede ver cómo se distribuyen los valores de amplitud, es decir, qué tan seguido aparecen ciertos valores dentro de la señal. Esto permite identificar si los datos se concentran más en un rango específico o si están más dispersos.
+
+<img width="988" height="393" alt="image" src="https://github.com/user-attachments/assets/ea953cc5-9eca-4a61-8ef5-69ba1b7f007a" />  <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/f9bffa09-c2d0-446f-9dae-22cea307781f" />
 
 
 
