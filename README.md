@@ -66,6 +66,12 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
     print(f"  Rango: {rango:.4f}")
     print(f"  Coeficiente de Variación: {coeficiente_variacion:.4f}%")
 
+
+    from scipy.stats import kurtosis
+
+    curt = kurtosis(senal)
+    print(f"Curtosis de la señal: {curt:.4f}")
+
 ## Datos estadisticos de la parte B adquiridos con el DAQ:
 
   Media: -1.2833
@@ -79,6 +85,8 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
   Rango: 4.8460
   
   Coeficiente de Variación: 49.0944%
+
+  Curtosis de la señal: 19.1574
 
 ## Datos estadisticos de la parte A adquiridos por funciones:
 
