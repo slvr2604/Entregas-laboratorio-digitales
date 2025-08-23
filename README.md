@@ -81,3 +81,9 @@ Estadísticas Descriptivas de la Señal:
   Coeficiente de Variación: 49.0944%
 
 
+  Media: -0.014106341399538005
+Desviacion estandar: 0.18098538862422828
+Coeficiente de variacion (REVISAR): 1283.007290821387
+Curtosis calculada con SciPy: 19.1574
+
+
