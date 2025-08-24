@@ -218,14 +218,17 @@ print("La curtosis es:", curtosis_manual)
 ```
 Y observamos que corresponde con la curtosis de funciones de Python.
 **La curtosis es: 21.850227609596285** 
+Finalmente concluimos:
+La media refleja el nivel promedio de la señal en milivoltios (mV). En el ECG, suele estar alrededor de cero porque se registran diferencias de potencial eléctrico, lo que indica que el análisis fue correcto. La desviación estandar nos muestra cuánto se dispersan los valores respecto a la media. En este caso nos mostró un valor bajo indicando estabilidad de la señal.
+El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10–15%), lo que en este caso nos indica que la señal es estable y repetitiva.
 
+El histograma permitió ver la distribución de amplitudes. 
 
+La curtosis al ser positiva, significa que los picos son más agudos y concentrados (lo esperado en un ECG con complejos QRS bien definidos). 
 
+Los resultados sugieren que la señal tiene un comportamiento estable, con baja dispersión, distribución centrada alrededor de cero y picos característicos. Esto confirma que los cálculos reflejan una señal fisiológica regular y sin alteraciones mayores en la calidad del registro.
 
-
-
-
-
+A su vez, la señal ECG del sujeto b001 en reposo muestra un ritmo cardíaco regular y fisiológicamente normal. El análisis estadístico confirma esta estabilidad al evidenciar baja variabilidad relativa y distribución esperada de la amplitud.
 
 ### Parte B:   
 Se generó una señal fisiológica del mismo tipo de la usada en la parte A usando el generador de señales biológicas junto con el *NI DAQ* y el osciloscopio para verificar que la señal diera de la manera adecuada. Cuando se visualizo que la gráfica estaba bien, se hizo un código en phyton para poder graficar la señal eb colab por medio de un documento .txt
