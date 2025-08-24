@@ -245,7 +245,30 @@ A su vez, la señal ECG del sujeto b001 en reposo muestra un ritmo cardíaco reg
 Se generó una señal fisiológica del mismo tipo de la usada en la parte A usando el generador de señales biológicas junto con el *NI DAQ* y el osciloscopio para verificar que la señal diera de la manera adecuada. Cuando se visualizo que la gráfica estaba bien, se hizo un código en phyton para poder graficar la señal eb colab por medio de un documento .txt
 
 
-PEGAR CODIGO PHYTON
+    !pip install nidaqmx
+    import nidaqmx
+    import numpy as np
+    import pandas as pd
+ 
+    canal_ai = "Dev1/ai0"
+    frecuencia = 5000
+    muestras = 10000
+
+    with nidaqmx.Task() as adquisicion:
+    adquisicion.ai_channels.add_ai_voltage_chan(canal_ai)
+    adquisicion.timing.cfg_samp_clk_timing(rate=frecuencia, samps_per_chan=muestras)
+    senal = adquisicion.read(number_of_samples_per_channel=muestras)
+    senal = np.array(senal)
+
+    t = np.arange(0, muestras) / frecuencia
+
+    datos = pd.DataFrame({"Tiempo (s)": t, "Voltaje (V)": senal})
+
+    datos.to_csv("registro_senal.csv", index=False)
+    datos.to_csv("registro_senal.txt", sep="\t", index=False)
+    datos.to_feather("registro_senal.feather")
+
+    print("Archivos guardados: registro_senal.csv, registro_senal.txt y registro_senal.feather")
 
 El código carga un archivo de texto que contiene los datos de la señal adquirida con el DAQ. Primero importa las librerías necesarias (NumPy y Matplotlib), después abre el archivo y guarda la primera columna como tiempo y la segunda como la amplitud de la señal. Luego grafica la señal en un intervalo de 0 a 0.1 segundos.   
  
