@@ -19,40 +19,14 @@ Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuent
 
 
 
-### Parte B:
-Para esta parte se realizo la adquisicion de una señal real utilizando la tarjeta *NI DAQ* conectada a el generador y al osciloscopio.  
-MMMM
-
-    !pip install nidaqmx
-    import nidaqmx
-    import numpy as np
-    import pandas as pd
-
-    canal_ai = "Dev3/ai0"
-    frecuencia = 5000
-    muestras = 10000
-
-    with nidaqmx.Task() as adquisicion:
-    adquisicion.ai_channels.add_ai_voltage_chan(canal_ai)
-    adquisicion.timing.cfg_samp_clk_timing(rate=frecuencia, samps_per_chan=muestras)
-    senal = adquisicion.read(number_of_samples_per_channel=muestras)
-    senal = np.array(senal)
-
-    t = np.arange(0, muestras) / frecuencia
-
-    datos = pd.DataFrame({"Tiempo (s)": t, "Voltaje (V)": senal})
-
-    datos.to_csv("registro_senal.csv", index=False)
-    datos.to_csv("registro_senal.txt", sep="\t", index=False)
-    datos.to_feather("registro_senal.feather")
-
-    print("Archivos guardados: registro_senal.csv, registro_senal.txt y registro_senal.feather")
-
-Para la adquisición de la señal se utilizó un código en Python con la librería nidaqmx, el cual permitió configurar la tarjeta NI DAQ especificando el canal analógico, la frecuencia de muestreo y el número de muestras a capturar. Una vez realizada la adquisición, los datos fueron organizados en un vector de tiempo y un vector de voltaje, los cuales se almacenaron en un DataFrame de Pandas. Luego, esta información fue exportada en formato de archivo 
- .txt que fue el que usamos, facilitando así su almacenamiento, visualización y análisis en herramientas externas.
+### Parte B:   
+Se generó una señal fisiológica del mismo tipo de la usada en la parte A usando el generador de señales biológicas junto con el *NI DAQ* y el osciloscopio para verificar que la señal diera de la manera adecuada. Cuando se visualizo que la gráfica estaba bien, se hizo un código en phyton para poder graficar la señal eb colab por medio de un documento .txt
 
 
+PEGAR CODIGO PHYTON
 
+El código carga un archivo de texto que contiene los datos de la señal adquirida con el DAQ. Primero importa las librerías necesarias (NumPy y Matplotlib), después abre el archivo y guarda la primera columna como tiempo y la segunda como la amplitud de la señal. Luego grafica la señal en un intervalo de 0 a 0.1 segundos.   
+ 
     import numpy as np
     import matplotlib.pyplot as plt
     ruta = "/content/drive/MyDrive/Colab Notebooks/senal_DAQ.txt"
@@ -75,15 +49,10 @@ Para la adquisición de la señal se utilizó un código en Python con la librer
 
     plt.xlim(0, 0.1)  
     plt.show()
+ 
 
-    except FileNotFoundError:
-    print(f"Error: No se encontró el archivo en la ruta {ruta}")
-    print("Por favor, verifica que el archivo esté en la ruta correcta o súbelo de nuevo.")
-    except Exception as e:
-    print(f"Ocurrió un error: {e}")
+<img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/bc5afd39-b815-4a82-bd27-3b23bf47097f" />
 
-Luego con este codigo ya se grafico la señal, se carga un archivo de texto que contiene los datos de la señal adquirida con el DAQ. Primero importa las librerías necesarias (NumPy y Matplotlib), después abre el archivo y guarda la primera columna como tiempo y la segunda como la amplitud de la señal. Luego grafica la señal en un intervalo de 0 a 0.1 segundos. 
-<img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/ad34853e-3d75-43e0-8770-55b782b5b61c" />
 La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó en Python. En el eje del tiempo se ve desde 0 hasta 0.1 segundos y en el eje vertical la amplitud en mV. Se notan picos que se repiten de manera clara, lo que confirma que el código cargó bien los datos y que la gráfica permite visualizar la señal de forma ordenada.
 
 
@@ -122,7 +91,8 @@ El **coeficiente de variación** relaciona la desviación estándar con la media
 La **curtosis** mide qué tan “picuda” o plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.
 
 
-## Datos estadisticos de la parte B adquiridos con el DAQ:
+
+ **Datos estadisticos de la parte B adquiridos con el DAQ:**
 
   Media: -1.2833
   
@@ -138,7 +108,7 @@ La **curtosis** mide qué tan “picuda” o plana es la distribución de los da
 
   Curtosis de la señal: 19.1574
 
-## Datos estadisticos de la parte A adquiridos por funciones:
+**Datos estadisticos de la parte A adquiridos por funciones:**
 
   Media: -0.014106341399538005
   
@@ -161,8 +131,11 @@ En la parte B con el DAQ se ve que la señal es más amplia y con más variació
 
 La gráfica muestra la función de probabilidad de la señal obtenida. Aquí se puede ver cómo se distribuyen los valores de amplitud, es decir, qué tan seguido aparecen ciertos valores dentro de la señal. Esto permite identificar si los datos se concentran más en un rango específico o si están más dispersos.
 
-<img width="988" height="393" alt="image" src="https://github.com/user-attachments/assets/ea953cc5-9eca-4a61-8ef5-69ba1b7f007a" /> }
-<img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/f9bffa09-c2d0-446f-9dae-22cea307781f" />
+<img width="988" height="393" alt="image" src="https://github.com/user-attachments/assets/353d1bae-75ee-419b-927a-bd6546e41b3c" />
+
+<img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2ddb1f91-2a77-4853-95fc-b914a7f9aa45" />
+
+
 La gráfica de la parte B muestra que la mayoría de valores de la señal se concentran cerca de -1 mV con un pico bien definido, mientras que en la parte A los datos se agrupan más alrededor de 0 mV y con una forma menos simétrica. Esto refleja que aunque ambas señales tienen concentraciones marcadas, el comportamiento de la adquirida con el DAQ es distinto al de la generada por funciones.
 
     # Histograma
@@ -174,8 +147,10 @@ La gráfica de la parte B muestra que la mayoría de valores de la señal se con
     plt.grid(True)
     plt.show()
 El histograma muestra la frecuencia con la que aparecen los valores de amplitud en la señal, permitiendo identificar en qué rangos se concentran más los datos y cómo se distribuyen a lo largo de la señal.
-<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/2ffc5d41-adc7-4b37-aae4-5625f9188db4" />
-<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/522e1a86-58a0-43b6-a406-f01b2ffe29d0" />
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/7c4c90f0-7d7e-4acb-9a8b-5322ff3e12f3" />
+
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/8361bea5-93a1-49c4-a234-c905de745556" />
+
 
 La primera gráfica, que es la del DAQ, muestra la señal más dispersa y cargada hacia valores negativos, porque viene directamente de la adquisición real. En cambio, la segunda, hecha con funciones, se ve más concentrada cerca de cero y con menos ruido. Se posria observar que la señal con el DAQ sale mas desordenada y sacada por funciones se ve un poco mas limpia.
 
@@ -184,13 +159,13 @@ La primera gráfica, que es la del DAQ, muestra la señal más dispersa y cargad
 La **Relación Señal-Ruido (SNR)** es una medida fundamental en el análisis de señales. Indica cuán fuerte es una señal en comparación con el ruido de fondo que la acompaña, y permite evaluar qué tan clara o distinguible resulta frente a las interferencias que pueden distorsionarla.  
 
 ```math
-SNR = Potenciaseñal / Potenciaruido
+SNR = Potenciadelaseñal / Potenciadelruido
 ```
 
 Pero como esta relación se expresa en decibelios (dB) la expresión queda como:  
 
 ```math
-SNR_dB = (10 · log10(Potenciaseñal / Potenciaruido))
+SNR_dB = (10 · log10(Potenciadelaseñal / Potenciadelruido))
 ```
 
 Un SNR alto indica que la señal es fuerte y clara respecto al ruido, lo que facilita su análisis, transmisión o interpretación. Por el contrario, un SNR bajo sugiere que el ruido interfiere significativamente, dificultando la detección de patrones o eventos relevantes.
@@ -229,9 +204,9 @@ La simulación de ruido gaussiano permite modelar interferencias realistas en se
 El ruido impulso es una interferencia compuesta por picos breves y de alta intensidad que aparecen de forma repentina en una señal. A diferencia del ruido gaussiano, no es continuo ni predecible, y puede distorsionar gravemente puntos específicos de la señal. Este tipo de ruido es común en entornos con interferencias electromagnéticas y puede ser particularmente problemático porque introduce distorsiones significativas en la señal.
 
 
-     import random # Importa el módulo random
+     import random 
      porcentaje_ruido_impulso = 0.01 # 1% ruido de impulso
-     amplitud_impulso = np.max(np.abs(senal)) * 2 # Dos veces la amplitud absoluta máxima de la señal original
+     amplitud_impulso = np.max(np.abs(senal)) * 2 
      
      senal_ruidosa_impulso = np.copy(senal)
      
@@ -251,12 +226,15 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
     snr_real_impulso = potencia_senal_original / potencia_ruido_impulso
     snr_real_impulso_db = 10 * np.log10(snr_real_impulso)
     print(f"SNR real de la señal con ruido de impulso: {snr_real_impulso_db:.2f} dB")  
+
+Se uso random para tener valores aleatorios de forma que el impulso pueda ser negativo o positivo, desde el inicio se programo para que solo el 1% de la señal tuviera ruido y se hizo una copia de la señal original para no modificarla cuando se le agregará el ruido, aparte se definió que la amplitud del ruido fuera la más alta de la señal y se multiplica por 2 para que sea más claro el ruido. También se calculó cuántas muestras serán afectadas por el ruido y se generaron indices aleatorios para agregar ruido y que no se repitieran, luego se hizo un for para que recorra tos los indices y les agregue un impulso sea negativo o positivo, finalmente se hicieron los cálculos de potencia para la señal original y para la del ruido con el fin de sacar el SNR.
+
     SNR real de la señal con ruido de impulso: 9.28 dB
-    
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/6538bc69-37b1-4015-86d2-097534f1ddbe" />
 
 
-**c.Contaminar la señal con ruido artefacto y medir el SNR**   
+**c.Contaminar la señal con ruido artefacto y medir el SNR**  
+El ruido artefacto es una distorsión no deseada que aparece en una señal debido a fallos técnicos, interferencias ambientales o procesos biológicos, y que no forma parte de la información original. Puede surgir por errores en sensores, movimientos musculares en señales médicas, interferencias electromagnéticas, o problemas de muestreo digital, y afecta la calidad y precisión del análisis. A diferencia de otros tipos de ruido, los artefactos suelen tener patrones específicos o repentinos que pueden confundirse con datos reales, por lo que se utilizan técnicas de filtrado, separación de fuentes o detección automática para eliminarlos o reducir su impacto. En este caso nosotros tomamos la red eléctrica en Colombia que esta a 60 Hz como ruido artefacto.
 
      frecuencia_interferencia = 60
      amplitud_interferencia = (np.max(senal) - np.min(senal)) * 0.1 
@@ -272,13 +250,12 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
      snr_real_interferencia = potencia_senal_original / potencia_ruido_interferencia
      snr_real_interferencia_db = 10 * np.log10(snr_real_interferencia)  
      print(f"SNR real de la señal con interferencia: {snr_real_interferencia_db:.2f} dB")
-     else:
-     print("No se añadió ruido de interferencia (la potencia del ruido es cero). El SNR es infinito.")   
-     SNR real de la señal con interferencia: 12.41 dB  
+
+Inicialmente se definió la amplitud de la interferencia para después generar la señal de interferencia que es una onda senoidal, después se le sumo dicha señal a la origina y finalmente se calcularon potencias junto con el SNR.
      
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/71fa1c0a-dafd-4669-b22e-4f897b617e42" />
 
-
+La señal ECG mostrada evidencia cómo la interferencia de 60 Hz proveniente de la red eléctrica puede superponerse a los componentes fisiológicos reales, generando oscilaciones que distorsionan la lectura. Este tipo de ruido artefacto, puede comprometer la precisión diagnóstica si no se filtra adecuadamente.
 
 
 
@@ -316,3 +293,4 @@ El ruido impulso es una interferencia compuesta por picos breves y de alta inten
      plt.show()
 
 Cada tipo de ruido se gráfica por separado para visualizar su impacto en la señal ECG. Esto permite comparar cómo cada tipo de ruido afecta la forma de la onda. Por ejemplo, el ruido gaussiano añade fluctuaciones suaves, mientras que el ruido de impulso introduce picos abruptos. La graficación de estas señales es crucial para entender el efecto del ruido y para diseñar técnicas de filtrado adecuadas
+
