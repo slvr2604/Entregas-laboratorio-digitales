@@ -158,15 +158,13 @@ La primera gráfica, que es la del DAQ, muestra la señal más dispersa y cargad
 ### Parte C:
 La **Relación Señal-Ruido (SNR)** es una medida fundamental en el análisis de señales. Indica cuán fuerte es una señal en comparación con el ruido de fondo que la acompaña, y permite evaluar qué tan clara o distinguible resulta frente a las interferencias que pueden distorsionarla.  
 
-```math
-SNR = Potenciadelaseñal / Potenciadelruido
-```
+**SNR = Potenciadelaseñal / Potenciadelruido**
+
 
 Pero como esta relación se expresa en decibelios (dB) la expresión queda como:  
 
-```math
-SNR_dB = (10 · log10(Potenciadelaseñal / Potenciadelruido))
-```
+**SNR_dB = (10 · log10(Potenciadelaseñal / Potenciadelruido))**
+
 
 Un SNR alto indica que la señal es fuerte y clara respecto al ruido, lo que facilita su análisis, transmisión o interpretación. Por el contrario, un SNR bajo sugiere que el ruido interfiere significativamente, dificultando la detección de patrones o eventos relevantes.
 
