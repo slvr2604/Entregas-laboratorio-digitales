@@ -71,6 +71,7 @@ plt.show()
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
 
 Y luego procedemos con el cálculo de los datos estadísticos:
+
 ```
 datos = signal[:,0]
 media = np.mean(datos)
@@ -80,21 +81,147 @@ coef_var = desviacion / media
 print("Media:", media)
 print("Desviación estándar:", desviacion)
 print("Coeficiente de variación:", coef_var)
-´´´
-
-Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que se procederá a tomar 10000 datos de la señal.
-
-´´´
-datos = signal[:,0]
-
-media = np.mean(datos)
-desviacion = np.std(datos, ddof=1)
-coef_var = desviacion / media
-
-print("Media:", media)
-print("Desviación estándar:", desviacion)
-print("Coeficiente de variación:", coef_var) 
 ```
+**Media: -0.014106341399538005**
+**Desviacion estandar: 0.18098538862422828**
+**Coeficiente de variacion: 12.83%**
+
+Luego procedemos a normalizar el histograma y se grafica como barras centradas en cada bin.
+Se obtiene el recuento por bins y sus bordes con numpy:
+```
+valores, bordes = np.histogram(datos, bins=30)
+```
+Y se grafica el histograma:
+```
+plt.figure(figsize=(12, 4))
+plt.hist(datos, bins=30, edgecolor="black")
+plt.xlabel("Amplitud (mV)")
+plt.ylabel("Frecuencia (Hz)")
+plt.title("Histograma de la señal")
+plt.grid(True)
+plt.show()
+```
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/bbb9fa2c-4bcd-4375-acba-57faf768613d" />
+
+Para calcular la función de probabilidad se normaliza el histograma (density=True) y se grafica como barras centradas en cada bin:
+```
+valores, bordes = np.histogram(datos, bins=30, density=True)
+centros = (bordes[:-1] + bordes[1:]) / 2
+plt.figure(figsize=(12, 4))
+plt.bar(centros, valores, width=(bordes[1]-bordes[0]), edgecolor="black")
+plt.xlabel("Amplitud (mV)")
+plt.ylabel("Probabilidad")
+plt.title("Función de probabilidad de la señal")
+plt.grid(True)
+plt.show()
+```
+<img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2db437da-29cb-48c6-a535-a14bcb719be8" />
+
+Ahora calculamos la curtosis (con SciPy)
+```
+from scipy.stats import kurtosis
+curtosis_scipy = kurtosis(datos, fisher=True)  
+```
+**Curtosis con SciPy: 21.850227609596285**
+
+fisher=True entrega el exceso de curtosis (se resta 3).
+Valores > 0 implican colas más pesadas que una normal y < 0, más ligeras.
+
+Tras haber calculado los datos estadísticos con funciones de Python, procedemos a calcular los datos a través de funciones manuales:
+
+Se calcula media, desviación estandar y coeficiente de variación.
+```
+cont = 0
+suma = 0
+for valor in signal[:, 0]:
+    suma += valor
+    cont += 1
+media_manual = suma / cont
+```
+```
+sum_a = 0
+for valor in signal[:, 0]:
+    sum_a += (valor - media_manual)**2
+desviacion_manual = (sum_a / cont)**0.5
+```
+```
+coef = (desviacion_manual / abs(media_manual)) * 100 
+```
+**Media: -0.014106341399537866**
+**Desviacion estandar: 0.18098538862422764**
+**Coeficiente de variacion: 1283.007290821395** (Revisar)
+
+Se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con plt.bar. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
+
+```
+amplitudes_senal = signal[:,0]
+num_bins = 30
+min_amplitud = min(amplitudes_senal)
+max_amplitud = max(amplitudes_senal)
+ancho_bin = (max_amplitud - min_amplitud) / num_bins
+limites_bins = [min_amplitud + i * ancho_bin for i in range(num_bins + 1)]
+
+frecuencias_manual = [0] * num_bins
+for amplitud in amplitudes_senal:
+    for i in range(num_bins):
+        if limites_bins[i] <= amplitud < limites_bins[i+1]:
+            frecuencias_manual[i] += 1
+            break
+centros_bin = [min_amplitud + (i + 0.5) * ancho_bin for i in range(num_bins)]
+
+plt.figure(figsize=(12, 4))
+plt.bar(centros_bin, frecuencias_manual, width=ancho_bin, align='center', edgecolor='black')
+plt.xlabel('Amplitud (mV)')
+plt.ylabel('Frecuencia (Hz)')
+plt.title('Histograma Manual')
+plt.grid(True)
+plt.show()
+
+print("Valor mínimo:", min_amplitud)
+print("Valor máximo:", max_amplitud)
+print("Ancho de cada bin:", ancho_bin)
+```
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/57a4a461-3f90-4ffb-b237-6eb710ad2d57" />
+
+**Valor mínimo: -0.1434077873293117
+Valor máximo: 1.1874437609651838
+Ancho de cada bin: 0.044361718276483185**
+
+Para el PDF se normaliza cada bin como frecuencia / (N * ancho_bin) y se grafica.
+```
+N_muestras = len(datos)
+ancho_bin_prob = ancho_bin
+frecuencias_prob = frecuencias_manual
+pdf_manual = [frecuencia / (N_muestras * ancho_bin_prob) for frecuencia in frecuencias_prob]
+centros_bin_prob = centros_bin
+
+
+plt.figure(figsize=(12, 4))
+plt.bar(centros_bin_prob, pdf_manual, width=ancho_bin_prob, align='center', edgecolor='black')
+plt.xlabel('Amplitud (mV)')
+plt.ylabel('Probabilidad')
+plt.title('Función de Probabilidad Manual')
+plt.grid(True)
+plt.show()
+```
+<img width="996" height="393" alt="image" src="https://github.com/user-attachments/assets/af73cb4e-8c7a-4216-85f6-27008ca5e22a" />
+
+Finalmente calculamos la curtosis de manera manual
+```
+datos2 = np.array(datos)
+media = np.mean(datos2)
+m2 = np.mean((datos2 - media)**2)
+m4 = np.mean((datos2 - media)**4)
+
+curtosis_manual = m4 / (m2**2) - 3
+print("La curtosis es:", curtosis_manual)
+```
+Y observamos que corresponde con la curtosis de funciones de Python.
+**La curtosis es: 21.850227609596285** 
+
+
+
+
 
 
 
