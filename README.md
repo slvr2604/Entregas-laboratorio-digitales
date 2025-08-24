@@ -21,7 +21,7 @@ Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuent
 
 ### Parte B:
 Para esta parte se realizo la adquisicion de una señal real utilizando la tarjeta *NI DAQ* conectada a el generador y al osciloscopio.  
-
+MMMM
 
     !pip install nidaqmx
     import nidaqmx
