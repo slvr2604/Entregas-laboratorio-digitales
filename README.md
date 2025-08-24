@@ -13,7 +13,8 @@ La señal graficada es la siguiente:
 
 Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que la frecuencia de muestreo es 5000 Hz y que se procederá a tomar 10000 datos de la señal.
 
-´datos = signal[:,0]
+´´´
+datos = signal[:,0]
 
 media = np.mean(datos)
 desviacion = np.std(datos, ddof=1)
@@ -21,7 +22,8 @@ coef_var = desviacion / media
 
 print("Media:", media)
 print("Desviación estándar:", desviacion)
-print("Coeficiente de variación:", coef_var) `
+print("Coeficiente de variación:", coef_var) 
+´´´
 
 
 
