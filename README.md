@@ -39,7 +39,8 @@ Para esta parte se realizo la adquisicion de una señal real utilizando la tarje
 
     print("Archivos guardados: registro_senal.csv, registro_senal.txt y registro_senal.feather")
 
-Para la adquisición de la señal se utilizó un código en Python con la librería nidaqmx, el cual permitió configurar la tarjeta NI DAQ especificando el canal analógico, la frecuencia de muestreo y el número de muestras a capturar. Una vez realizada la adquisición, los datos fueron organizados en un vector de tiempo y un vector de voltaje, los cuales se almacenaron en un DataFrame de Pandas. Posteriormente, esta información fue exportada en diferentes formatos de archivo (.csv, .txt y .feather), facilitando así su almacenamiento, visualización y análisis en herramientas externas.
+Para la adquisición de la señal se utilizó un código en Python con la librería nidaqmx, el cual permitió configurar la tarjeta NI DAQ especificando el canal analógico, la frecuencia de muestreo y el número de muestras a capturar. Una vez realizada la adquisición, los datos fueron organizados en un vector de tiempo y un vector de voltaje, los cuales se almacenaron en un DataFrame de Pandas. Luego, esta información fue exportada en formato de archivo 
+ .txt que fue el que usamos, facilitando así su almacenamiento, visualización y análisis en herramientas externas.
 
 
 
