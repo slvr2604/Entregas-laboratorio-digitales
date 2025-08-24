@@ -83,8 +83,13 @@ print("Desviación estándar:", desviacion)
 print("Coeficiente de variación:", coef_var)
 ```
 **Media: -0.014106341399538005**
+
+
 **Desviacion estandar: 0.18098538862422828**
+
+
 **Coeficiente de variacion: 12.83%**
+
 
 Luego procedemos a normalizar el histograma y se grafica como barras centradas en cada bin.
 Se obtiene el recuento por bins y sus bordes con numpy:
@@ -217,8 +222,14 @@ curtosis_manual = m4 / (m2**2) - 3
 print("La curtosis es:", curtosis_manual)
 ```
 Y observamos que corresponde con la curtosis de funciones de Python.
-**La curtosis es: 21.850227609596285** 
+
+
+**La curtosis es: 21.850227609596285**.
+
+
 Finalmente concluimos:
+
+
 La media refleja el nivel promedio de la señal en milivoltios (mV). En el ECG, suele estar alrededor de cero porque se registran diferencias de potencial eléctrico, lo que indica que el análisis fue correcto. La desviación estandar nos muestra cuánto se dispersan los valores respecto a la media. En este caso nos mostró un valor bajo indicando estabilidad de la señal.
 El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10–15%), lo que en este caso nos indica que la señal es estable y repetitiva.
 
