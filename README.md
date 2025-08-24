@@ -13,8 +13,7 @@ La señal graficada es la siguiente:
 
 Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que la frecuencia de muestreo es 5000 Hz y que se procederá a tomar 10000 datos de la señal.
 
-# Cálculo de datos estadísticos con funciones.
-datos = signal[:,0]
+´datos = signal[:,0]
 
 media = np.mean(datos)
 desviacion = np.std(datos, ddof=1)
@@ -22,15 +21,7 @@ coef_var = desviacion / media
 
 print("Media:", media)
 print("Desviación estándar:", desviacion)
-print("Coeficiente de variación:", coef_var)
-
-
-# Histograma con funciones
-datos = signal[:,0]
-valores, bordes = np.histogram(datos, bins=30)
-
-print("Frecuencias (conteo):", valores)
-print("Bordes de los intervalos:", bordes)
+print("Coeficiente de variación:", coef_var) `
 
 
 
