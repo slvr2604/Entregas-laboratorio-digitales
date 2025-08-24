@@ -47,7 +47,7 @@ signals, fields = wfdb.rdsamp("/content/drive/MyDrive/Colab Notebooks/b001")
 fields  
 ```
 
-Extraemos un segmento de 10000 datos
+Se toman 10000 muestras de la señal
 ```
 signal = signals[80000:90000]
 ```
@@ -67,7 +67,7 @@ plt.show()
 ```
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
 
-Y luego procedemos con el cálculo de los datos estadísticos:
+**Datos estadisticos con funciones**
 
 ```
 datos = signal[:,0]
@@ -79,16 +79,14 @@ print("Media:", media)
 print("Desviación estándar:", desviacion)
 print("Coeficiente de variación:", coef_var)
 ```
-**Media: -0.014106341399538005**
+La media que es el promedio de un conjunto de números, se calcula sumando todos los valores y dividiendo entre la cantidad de elementos. Para la señal nos dio un valor de **-0.014106341399538005**
+
+La desviación estándar es una medida que indica cuánto se dispersan o se alejan los datos respecto a la media. Dio como resultado **0.18098538862422828**
+
+El coeficiente de variación (CV) es una medida estadística que indica el grado de dispersión de los datos en relación con la media. Se expresa como un porcentaje y dio como resultado **12.83%**
 
 
-**Desviacion estandar: 0.18098538862422828**
-
-
-**Coeficiente de variacion: 12.83%**
-
-
-Luego procedemos a normalizar el histograma y se grafica como barras centradas en cada bin.
+Luego procedemos a hacer el histograma y se grafica como barras centradas en cada bin.
 Se obtiene el recuento por bins y sus bordes con numpy:
 ```
 valores, bordes = np.histogram(datos, bins=30)
@@ -119,15 +117,20 @@ plt.show()
 ```
 <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2db437da-29cb-48c6-a535-a14bcb719be8" />
 
-Ahora calculamos la curtosis (con SciPy)
+Ahora se calcula la curtosis (con SciPy)  
+
+La curtosis es una medida estadística que describe la forma de la distribución de los datos, especialmente cuánto se concentran en los extremos (colas) en comparación con una distribución normal.
 ```
 from scipy.stats import kurtosis
 curtosis_scipy = kurtosis(datos, fisher=True)  
 ```
-**Curtosis con SciPy: 21.850227609596285**
+**Curtosis: 21.850227609596285**
+
 
 fisher=True entrega el exceso de curtosis (se resta 3).
 Valores > 0 implican colas más pesadas que una normal y < 0, más ligeras.
+
+**Datos estadisticos de forma manual**
 
 Tras haber calculado los datos estadísticos con funciones de Python, procedemos a calcular los datos a través de funciones manuales:
 
@@ -149,9 +152,9 @@ desviacion_manual = (sum_a / cont)**0.5
 ```
 coef = (desviacion_manual / abs(media_manual)) * 100 
 ```
-**Media: -0.014106341399537866**
-**Desviacion estandar: 0.18098538862422764**
-**Coeficiente de variacion: 1283.007290821395** (Revisar)
+**Media: -0.014106341399537866**  
+**Desviacion estandar: 0.18098538862422764**  
+**Coeficiente de variacion: 1283.007290821395** 
 
 Se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con plt.bar. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
 
@@ -221,13 +224,9 @@ print("La curtosis es:", curtosis_manual)
 Y observamos que corresponde con la curtosis de funciones de Python.
 
 
-**La curtosis es: 21.850227609596285**.
+La curtosis es: **21.850227609596285**.
 
-
-Finalmente concluimos:
-
-
-La media refleja el nivel promedio de la señal en milivoltios (mV). En el ECG, suele estar alrededor de cero porque se registran diferencias de potencial eléctrico, lo que indica que el análisis fue correcto. La desviación estandar nos muestra cuánto se dispersan los valores respecto a la media. En este caso nos mostró un valor bajo indicando estabilidad de la señal.
+En conclusión, la media refleja el nivel promedio de la señal en milivoltios (mV). En el ECG, suele estar alrededor de cero porque se registran diferencias de potencial eléctrico, lo que indica que el análisis fue correcto. La desviación estandar nos muestra cuánto se dispersan los valores respecto a la media. En este caso nos mostró un valor bajo indicando estabilidad de la señal.  
 El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10–15%), lo que en este caso nos indica que la señal es estable y repetitiva.
 
 El histograma permitió ver la distribución de amplitudes. 
