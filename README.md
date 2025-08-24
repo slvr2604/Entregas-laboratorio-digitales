@@ -3,15 +3,32 @@ Prácticos del laboratorio de procesamiento digital de señales.
 
 
 
-## Laboratorio 1: Análisis estadístico de una señal.
+## Laboratorio 1: Análisis estadístico de una señal. (Registro b001)
 ### Parte A:
 
-Se utilizó la base de datos "Physionet" para adquirir una señal fisiológica, esta a su vez fue importada y graficada.
-La señal graficada es la siguiente:
+Nos enfocaremos en la lectura del registro "b001" hasta el cálculo de estadísticas, histogramas y curtosis. 
+
+El estudio de las señales fisiológicas se basa en el análisis de la serie RR para analizar si las pequeñas discrepancias que se detectan usando dos distintas derivaciones se ven influenciadas por la respiración.
+Se estudiaron 20 voluntario presuntamente sanos y el estudio se dividió en tres fases:
+1.  **Reposo basal (5 min):** registros b001 a b020.  
+2. **Durante música clásica (~50 min):** registros m001 a m020.  
+3. **Post-música (5 min):** registros p001 a p020.  
+   
+Se tiene en cuenta que los sujetos permanecieron acostados boca arriba, quietos, despiertos, en una cama estándar.
+ 
+Se utilizó una frecuencia de muestreo de 5 kHz en todos los canales.  
+Aquí trabajamos con el **registro b001** (fase basal).
+
+**Requisitos**
+- **Google Colab**.
+- **Python 3.x**
+- Librerías: `numpy`, `matplotlib`, `wfdb`, `scipy`.  
+  - En Colab, el script instala `wfdb` con `pip` y `scipy` suele estar preinstalado.
+
 
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
 
-Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que la frecuencia de muestreo es 5000 Hz y que se procederá a tomar 10000 datos de la señal.
+Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que se procederá a tomar 10000 datos de la señal.
 
 ´´´
 datos = signal[:,0]
