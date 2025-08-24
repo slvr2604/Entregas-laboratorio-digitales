@@ -1,15 +1,16 @@
 # Entregas-laboratorio-digitales
-Prácticos del laboratorio de procesamiento digital de señales.
+Lina María Cortés Almonacid
+María Alejandra Torres Cardenas
+Silvia
 
 
 
 ## Laboratorio 1: Análisis estadístico de una señal. (Registro b001)
 ### Parte A:
 
-Nos enfocaremos en la lectura del registro "b001" hasta el cálculo de estadísticas, histogramas y curtosis. 
+Se tomó un registro de PhysioNet donde tomaban varios ECG, nosotras descargamos el "b001" para hacer cálculos estadísticos, histogramas y curtosis. 
 
-El estudio de las señales fisiológicas se basa en el análisis de la serie RR para analizar si las pequeñas discrepancias que se detectan usando dos distintas derivaciones se ven influenciadas por la respiración.
-Se estudiaron 20 voluntarios presuntamente sanos y el estudio se dividió en tres fases:
+En dicho registro estudiaron 20 voluntarios presuntamente sanos y el estudio se dividió en tres fases:
 1.  **Reposo basal (5 min):** registros b001 a b020.  
 2. **Durante música clásica (~50 min):** registros m001 a m020.  
 3. **Post-música (5 min):** registros p001 a p020.  
@@ -19,11 +20,7 @@ Tenemos en cuenta que los sujetos permanecieron acostados boca arriba, quietos, 
 Se utilizó una frecuencia de muestreo de 5 kHz en todos los canales.  
 Aquí trabajamos con el **registro b001** (fase basal).
 
-**Requisitos**
-- **Google Colab**.
-- **Python 3.x**
-- Librerías: `numpy`, `matplotlib`, `wfdb`, `scipy`.  
-- En Colab, el script instala `wfdb` con `pip` y `scipy` suele estar preinstalado.
+Se usaron librerías como `numpy`, `matplotlib`, `wfdb`, `scipy`. En Colab, se instala `wfdb` con `pip` y `scipy` suele estar preinstalado.
 
 Se comienza con la intalación de wdfb (que permitirá la lectura de los datos fisiológicos) y además haciendo uso de las librerias necesarias tales como:
 
@@ -35,7 +32,7 @@ import wfdb
 import random
 ```
 
-También usamos utilidades de Colab para subir archivos y montar Google Drive:
+También usamos utilidades de Colab para subir archivos y montar en Google Drive:
 
 ```
 from google.colab import files
@@ -44,10 +41,10 @@ uploaded = files.upload()
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-Se lee el registro b001 desde Drive:
+Se lee el registro b001 desde Drive y da algunos datos del archivo (la señal):
 ```
 signals, fields = wfdb.rdsamp("/content/drive/MyDrive/Colab Notebooks/b001")
-fields  # metadatos del registro
+fields  
 ```
 
 Extraemos un segmento de 10000 datos
