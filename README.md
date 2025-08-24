@@ -333,7 +333,7 @@ La **desviación estándar** refleja qué tanto se alejan los valores respecto a
 
 El **coeficiente de variación** relaciona la desviación estándar con la media y es útil para comparar la variabilidad entre señales de distinta escala.
 
-La **curtosis** mide qué tan “picuda” o plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.
+La **curtosis** mide qué tan altos o bajos son los picos,o que tan plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.
 
 
 
