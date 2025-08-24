@@ -9,8 +9,8 @@ Prácticos del laboratorio de procesamiento digital de señales.
 Se utilizó la base de datos "Physionet" para adquirir una señal fisiológica, esta a su vez fue importada y graficada.
 La señal es la siguiente:
 
-<img width = "1015" height = "393" alt = "image" scr = "<img width="996" height="393" alt="17560008299183082953200710680972" src="https://github.com/user-attachments/assets/ba5bf53e-f960-4dbf-8d07-a659b25b0e90" />
-"/>
+<img width="996" height="393" alt="17560008299183082953200710680972" src="https://github.com/user-attachments/assets/4868c194-42ac-4683-8c15-4d671f1c2158" />
+
 
 
 
