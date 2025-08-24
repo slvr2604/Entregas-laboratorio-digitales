@@ -7,9 +7,13 @@ Prácticos del laboratorio de procesamiento digital de señales.
 ### Parte A:
 
 Se utilizó la base de datos "Physionet" para adquirir una señal fisiológica, esta a su vez fue importada y graficada.
-La señal es la siguiente:
+La señal graficada es la siguiente:
 
-<img width="996" height="393" alt="17560008299183082953200710680972" src="https://github.com/user-attachments/assets/4868c194-42ac-4683-8c15-4d671f1c2158" />
+<img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
+
+Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que la frecuencia de muestreo es 5000 Hz y que se procederá a tomar 10000 datos de la señal.
+
+
 
 
 
