@@ -249,7 +249,8 @@ El ruido artefacto es una distorsión no deseada que aparece en una señal debid
      snr_real_interferencia_db = 10 * np.log10(snr_real_interferencia)  
      print(f"SNR real de la señal con interferencia: {snr_real_interferencia_db:.2f} dB")
 
-Inicialmente se definió la amplitud de la interferencia para después generar la señal de interferencia que es una onda senoidal, después se le sumo dicha señal a la origina y finalmente se calcularon potencias junto con el SNR.
+Inicialmente se definió la amplitud de la interferencia para después generar la señal de interferencia que es una onda senoidal, después se le sumo dicha señal a la origina y finalmente se calcularon potencias junto con el SNR.  
+SNR real de la señal con interferencia: 12.41 dB
      
 <img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/71fa1c0a-dafd-4669-b22e-4f897b617e42" />
 
