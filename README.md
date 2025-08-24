@@ -27,37 +27,38 @@ Aquí trabajamos con el **registro b001** (fase basal).
 
 Se comienza con la intalación de wdfb (que permitirá la lectura de los datos fisiológicos) y además haciendo uso de las librerias necesarias tales como:
 
-´´´
+```
 !pip install wfdb  
 import numpy as np
 import matplotlib.pyplot as plt
 import wfdb
 import random
-´´´
+```
+
 También usamos utilidades de Colab para subir archivos y montar Google Drive:
-´´´
+
+```
 from google.colab import files
 uploaded = files.upload()
 
 from google.colab import drive
 drive.mount('/content/drive')
-
-´´´
+```
 Se lee el registro b001 desde Drive:
-´´´
+```
 signals, fields = wfdb.rdsamp("/content/drive/MyDrive/Colab Notebooks/b001")
 fields  # metadatos del registro
-´´´
+```
 
 Extraemos un segmento de 10000 datos
-´´´
+```
 signal = signals[80000:90000]
-´´´
+```
 Si tenemos en cuenta que la frecuencia de muestreo es igual a 5000 Hz y que las muestras son 10000, podremos inferir que el tiempo de la muestra es de dos segundos.
 
 
 Ahora procedemos con la gráfica. Se grafica la columna 0 (típicamente ECG derivación I):
-´´´
+```
 plt.figure(figsize=(12, 4))
 plt.plot(signal[:, 0])
 plt.title('Señal Fisiológica')
@@ -66,11 +67,11 @@ plt.ylabel('Amplitud (mV)')
 plt.legend()
 plt.grid()
 plt.show()
-´´´
+```
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
 
 Y luego procedemos con el cálculo de los datos estadísticos:
-´´´
+```
 datos = signal[:,0]
 media = np.mean(datos)
 desviacion = np.std(datos, ddof=1)
@@ -93,7 +94,7 @@ coef_var = desviacion / media
 print("Media:", media)
 print("Desviación estándar:", desviacion)
 print("Coeficiente de variación:", coef_var) 
-´´´
+```
 
 
 
