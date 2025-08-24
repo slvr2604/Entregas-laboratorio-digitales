@@ -86,7 +86,8 @@ La desviación estándar es una medida que indica cuánto se dispersan o se alej
 El coeficiente de variación (CV) es una medida estadística que indica el grado de dispersión de los datos en relación con la media. Se expresa como un porcentaje y dio como resultado **12.83%**
 
 
-Luego procedemos a hacer el histograma y se grafica como barras centradas en cada bin.
+Luego procedemos a hacer el histograma que es una representación gráfica que muestra cómo se distribuyen los datos de un conjunto en intervalos o rangos de valores llamados bins y se grafica como barras centradas en cada bin.
+
 Se obtiene el recuento por bins y sus bordes con numpy:
 ```
 valores, bordes = np.histogram(datos, bins=30)
@@ -103,7 +104,8 @@ plt.show()
 ```
 <img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/bbb9fa2c-4bcd-4375-acba-57faf768613d" />
 
-Para calcular la función de probabilidad se normaliza el histograma (density=True) y se grafica como barras centradas en cada bin:
+Para calcular la función de probabilidad se normaliza el histograma (se ajustan las frecuencias para que no dependan del número de datos)  y se grafica como barras centradas en cada bin:
+
 ```
 valores, bordes = np.histogram(datos, bins=30, density=True)
 centros = (bordes[:-1] + bordes[1:]) / 2
@@ -117,6 +119,8 @@ plt.show()
 ```
 <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2db437da-29cb-48c6-a535-a14bcb719be8" />
 
+La función del density = True es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.
+
 Ahora se calcula la curtosis (con SciPy)  
 
 La curtosis es una medida estadística que describe la forma de la distribución de los datos, especialmente cuánto se concentran en los extremos (colas) en comparación con una distribución normal.
@@ -128,13 +132,13 @@ curtosis_scipy = kurtosis(datos, fisher=True)
 
 
 fisher=True entrega el exceso de curtosis (se resta 3).
-Valores > 0 implican colas más pesadas que una normal y < 0, más ligeras.
+Si la curtosis es mayor a 0, esto nos indica que las colas de la grafica son más pesadas de lo normal.
 
 **Datos estadisticos de forma manual**
 
-Tras haber calculado los datos estadísticos con funciones de Python, procedemos a calcular los datos a través de funciones manuales:
+Tras haber calculado los datos estadísticos con funciones, procedemos a calcular los datos a través de funciones manuales:
 
-Se calcula media, desviación estandar y coeficiente de variación.
+Se calcula media, desviación estandar y coeficiente de variación. Que han sido previamente explicadas.
 ```
 cont = 0
 suma = 0
@@ -143,20 +147,23 @@ for valor in signal[:, 0]:
     cont += 1
 media_manual = suma / cont
 ```
+En la media el signal[:,0]: toma todas las columnas de la fila 0, la suma hace la suma acumula todos los valores y el cont cuenta cuantos elementos hay. La media equivale a la suma de los datos dividida entre el numero de datos.
+La media será igual a **-0.014106341399537866**
 ```
 sum_a = 0
 for valor in signal[:, 0]:
     sum_a += (valor - media_manual)**2
 desviacion_manual = (sum_a / cont)**0.5
 ```
+En sa sum_a se calcula la desviación para cada dato respecto a la media: (valor - media_manual). Luego, lo eleva al cuadrado y lo va acumulando en sum_a y al final divide entre cont (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
+
 ```
 coef = (desviacion_manual / abs(media_manual)) * 100 
 ```
-**Media: -0.014106341399537866**  
-**Desviacion estandar: 0.18098538862422764**  
-**Coeficiente de variacion: 1283.007290821395** 
+Se usa abs(media_manual) para evitar signo negativo si la media fuera negativa y se multiplica por 100 para expresarlo en porcentaje.
+**1283.007290821395**
 
-Se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con plt.bar. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
+Luego, se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con plt.bar. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
 
 ```
 amplitudes_senal = signal[:,0]
@@ -165,6 +172,10 @@ min_amplitud = min(amplitudes_senal)
 max_amplitud = max(amplitudes_senal)
 ancho_bin = (max_amplitud - min_amplitud) / num_bins
 limites_bins = [min_amplitud + i * ancho_bin for i in range(num_bins + 1)]
+```
+Se define el numero de intervalos, que en este caso serán 30. Y se determina el valor mínimo y máximo de cada señal. Esto nos permitirá calcular el ancho del bin que es igual al rango total de la señal sobre el número de bins.
+Los límites generan los bordes de cada bin y se usa `num_bins + 1` porque los bordes siempre son uno más que los intervalos.
+```
 
 frecuencias_manual = [0] * num_bins
 for amplitud in amplitudes_senal:
@@ -173,6 +184,12 @@ for amplitud in amplitudes_senal:
             frecuencias_manual[i] += 1
             break
 centros_bin = [min_amplitud + (i + 0.5) * ancho_bin for i in range(num_bins)]
+```
+En esta parte se inicializan las frecuencias con ceros `([0] * num_bins)`.
+Y para cada valor de la señal (amplitud): Recorre los bins y pregunta: ¿cae en este intervalo? Si sí → suma 1 a ese bin.
+Y al final `frecuencias_manual[i]` tiene cuántos datos cayeron en cada intervalo.
+Y la función `centros_bin` hace el calculo de los puntos medios del bin para que al graficarlos, estos queden bien centrados.
+```
 
 plt.figure(figsize=(12, 4))
 plt.bar(centros_bin, frecuencias_manual, width=ancho_bin, align='center', edgecolor='black')
@@ -188,18 +205,26 @@ print("Ancho de cada bin:", ancho_bin)
 ```
 <img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/57a4a461-3f90-4ffb-b237-6eb710ad2d57" />
 
-**Valor mínimo: -0.1434077873293117
-Valor máximo: 1.1874437609651838
-Ancho de cada bin: 0.044361718276483185**
+**Valor mínimo: -0.1434077873293117**
 
-Para el PDF se normaliza cada bin como frecuencia / (N * ancho_bin) y se grafica.
+
+**Valor máximo: 1.1874437609651838**
+
+
+**Ancho de cada bin: 0.044361718276483185**
+
+
+Para la funcion de probabilidad se normaliza cada bin (en lugar de mostrar el conteo absoluto de datos en ese intervalo, lo ajustasmos para que represente una frecuencia relativa) como frecuencia / (N * ancho_bin) y se grafica.
 ```
 N_muestras = len(datos)
 ancho_bin_prob = ancho_bin
 frecuencias_prob = frecuencias_manual
 pdf_manual = [frecuencia / (N_muestras * ancho_bin_prob) for frecuencia in frecuencias_prob]
 centros_bin_prob = centros_bin
-
+```
+En primer lugar se cuenta cuántos datos tenemos en total. 
+Luego reutilizamos el ancho del bin, ya que es necesario para convertir las frecuencias en densidad. Usamos las frecuencias absolutas y calculamos la función de probabilidad `pdf_manual` y finalmente se utilizan los centros de los bins usados anteriormente.
+```
 
 plt.figure(figsize=(12, 4))
 plt.bar(centros_bin_prob, pdf_manual, width=ancho_bin_prob, align='center', edgecolor='black')
@@ -221,7 +246,11 @@ m4 = np.mean((datos2 - media)**4)
 curtosis_manual = m4 / (m2**2) - 3
 print("La curtosis es:", curtosis_manual)
 ```
-Y observamos que corresponde con la curtosis de funciones de Python.
+En primer lugar se calcula la media de los datos. 
+En `m2` se calcula la varianza poblacional, que es la fórmula utilizada en el código y en `m4` se mide qué tanto pesan los valores extremos en la distribución, que utiliza la misma fórmula de varianza poblacional pero usando una potencia de 4.
+Finalmente se calcula la curtosis en exceso, que es la fórmula expresada en el código. 
+
+Y observamos que corresponde con la curtosis realizada gon funciones.
 
 
 La curtosis es: **21.850227609596285**.
