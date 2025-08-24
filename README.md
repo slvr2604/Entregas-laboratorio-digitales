@@ -13,6 +13,36 @@ La señal es la siguiente:
 ### Parte B:
 Para esta parte se realizo la adquisicion de una señal real utilizando la tarjeta *NI DAQ* conectada a el generador y al osciloscopio.  
 
+
+    !pip install nidaqmx
+    import nidaqmx
+    import numpy as np
+    import pandas as pd
+
+    canal_ai = "Dev3/ai0"
+    frecuencia = 5000
+    muestras = 10000
+
+    with nidaqmx.Task() as adquisicion:
+    adquisicion.ai_channels.add_ai_voltage_chan(canal_ai)
+    adquisicion.timing.cfg_samp_clk_timing(rate=frecuencia, samps_per_chan=muestras)
+    senal = adquisicion.read(number_of_samples_per_channel=muestras)
+    senal = np.array(senal)
+
+    t = np.arange(0, muestras) / frecuencia
+
+    datos = pd.DataFrame({"Tiempo (s)": t, "Voltaje (V)": senal})
+
+    datos.to_csv("registro_senal.csv", index=False)
+    datos.to_csv("registro_senal.txt", sep="\t", index=False)
+    datos.to_feather("registro_senal.feather")
+
+    print("Archivos guardados: registro_senal.csv, registro_senal.txt y registro_senal.feather")
+
+Para la adquisición de la señal se utilizó un código en Python con la librería nidaqmx, el cual permitió configurar la tarjeta NI DAQ especificando el canal analógico, la frecuencia de muestreo y el número de muestras a capturar. Una vez realizada la adquisición, los datos fueron organizados en un vector de tiempo y un vector de voltaje, los cuales se almacenaron en un DataFrame de Pandas. Posteriormente, esta información fue exportada en diferentes formatos de archivo (.csv, .txt y .feather), facilitando así su almacenamiento, visualización y análisis en herramientas externas.
+
+
+
     import numpy as np
     import matplotlib.pyplot as plt
     ruta = "/content/drive/MyDrive/Colab Notebooks/senal_DAQ.txt"
