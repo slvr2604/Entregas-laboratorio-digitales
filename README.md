@@ -9,12 +9,12 @@ Prácticos del laboratorio de procesamiento digital de señales.
 Nos enfocaremos en la lectura del registro "b001" hasta el cálculo de estadísticas, histogramas y curtosis. 
 
 El estudio de las señales fisiológicas se basa en el análisis de la serie RR para analizar si las pequeñas discrepancias que se detectan usando dos distintas derivaciones se ven influenciadas por la respiración.
-Se estudiaron 20 voluntario presuntamente sanos y el estudio se dividió en tres fases:
+Se estudiaron 20 voluntarios presuntamente sanos y el estudio se dividió en tres fases:
 1.  **Reposo basal (5 min):** registros b001 a b020.  
 2. **Durante música clásica (~50 min):** registros m001 a m020.  
 3. **Post-música (5 min):** registros p001 a p020.  
    
-Se tiene en cuenta que los sujetos permanecieron acostados boca arriba, quietos, despiertos, en una cama estándar.
+Tenemos en cuenta que los sujetos permanecieron acostados boca arriba, quietos, despiertos, en una cama estándar.
  
 Se utilizó una frecuencia de muestreo de 5 kHz en todos los canales.  
 Aquí trabajamos con el **registro b001** (fase basal).
@@ -23,10 +23,63 @@ Aquí trabajamos con el **registro b001** (fase basal).
 - **Google Colab**.
 - **Python 3.x**
 - Librerías: `numpy`, `matplotlib`, `wfdb`, `scipy`.  
-  - En Colab, el script instala `wfdb` con `pip` y `scipy` suele estar preinstalado.
+- En Colab, el script instala `wfdb` con `pip` y `scipy` suele estar preinstalado.
+
+Se comienza con la intalación de wdfb (que permitirá la lectura de los datos fisiológicos) y además haciendo uso de las librerias necesarias tales como:
+
+´´´
+!pip install wfdb  
+import numpy as np
+import matplotlib.pyplot as plt
+import wfdb
+import random
+´´´
+También usamos utilidades de Colab para subir archivos y montar Google Drive:
+´´´
+from google.colab import files
+uploaded = files.upload()
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+´´´
+Se lee el registro b001 desde Drive:
+´´´
+signals, fields = wfdb.rdsamp("/content/drive/MyDrive/Colab Notebooks/b001")
+fields  # metadatos del registro
+´´´
+
+Extraemos un segmento de 10000 datos
+´´´
+signal = signals[80000:90000]
+´´´
+Si tenemos en cuenta que la frecuencia de muestreo es igual a 5000 Hz y que las muestras son 10000, podremos inferir que el tiempo de la muestra es de dos segundos.
 
 
+Ahora procedemos con la gráfica. Se grafica la columna 0 (típicamente ECG derivación I):
+´´´
+plt.figure(figsize=(12, 4))
+plt.plot(signal[:, 0])
+plt.title('Señal Fisiológica')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Amplitud (mV)')
+plt.legend()
+plt.grid()
+plt.show()
+´´´
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
+
+Y luego procedemos con el cálculo de los datos estadísticos:
+´´´
+datos = signal[:,0]
+media = np.mean(datos)
+desviacion = np.std(datos, ddof=1)
+coef_var = desviacion / media
+
+print("Media:", media)
+print("Desviación estándar:", desviacion)
+print("Coeficiente de variación:", coef_var)
+´´´
 
 Y se proceden a calcular los datos estadísticos de la señal, teniendo en cuenta que se procederá a tomar 10000 datos de la señal.
 
