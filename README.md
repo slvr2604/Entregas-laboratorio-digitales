@@ -147,7 +147,7 @@ for valor in signal[:, 0]:
     cont += 1
 media_manual = suma / cont
 ```
-En la media el signal[:,0]: toma todas las columnas de la fila 0, la suma hace la suma acumula todos los valores y el cont cuenta cuantos elementos hay. La media equivale a la suma de los datos dividida entre el numero de datos.
+En la media el `signal[:,0]:` toma todas las columnas de la fila 0, la `suma` hace la suma acumula todos los valores y el `cont` cuenta cuantos elementos hay. La media equivale a la suma de los datos dividida entre el numero de datos.
 La media será igual a **-0.014106341399537866**
 ```
 sum_a = 0
@@ -155,7 +155,7 @@ for valor in signal[:, 0]:
     sum_a += (valor - media_manual)**2
 desviacion_manual = (sum_a / cont)**0.5
 ```
-En sa sum_a se calcula la desviación para cada dato respecto a la media: (valor - media_manual). Luego, lo eleva al cuadrado y lo va acumulando en sum_a y al final divide entre cont (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
+En sa `sum_a` se calcula la desviación para cada dato respecto a la media: `(valor - media_manual)`. Luego, lo eleva al cuadrado y lo va acumulando en sum_a y al final divide entre cont (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
 
 ```
 coef = (desviacion_manual / abs(media_manual)) * 100 
