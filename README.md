@@ -54,7 +54,7 @@ signal = signals[80000:90000]
 Si tenemos en cuenta que la frecuencia de muestreo es igual a 5000 Hz y que las muestras son 10000, podremos inferir que el tiempo de la muestra es de dos segundos.
 
 
-Ahora procedemos con la gráfica. Se grafica la columna 0 (típicamente ECG derivación I):
+Ahora procedemos con la gráfica. 
 ```
 plt.figure(figsize=(12, 4))
 plt.plot(signal[:, 0])
