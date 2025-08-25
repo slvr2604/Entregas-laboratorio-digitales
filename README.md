@@ -1,7 +1,7 @@
 # Entregas-laboratorio-digitales
 Lina María Cortés Almonacid
 María Alejandra Torres Cardenas
-Silvia
+Silvia Lorena Vargas Rueda
 
 
 
@@ -119,7 +119,7 @@ plt.show()
 ```
 <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2db437da-29cb-48c6-a535-a14bcb719be8" />
 
-La función del density = True es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.
+La función del `density = True` es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.
 
 Ahora se calcula la curtosis (con SciPy)  
 
@@ -131,7 +131,7 @@ curtosis_scipy = kurtosis(datos, fisher=True)
 **Curtosis: 21.850227609596285**
 
 
-fisher=True entrega el exceso de curtosis (se resta 3).
+`fisher=True` entrega el exceso de curtosis (se resta 3).
 Si la curtosis es mayor a 0, esto nos indica que las colas de la grafica son más pesadas de lo normal.
 
 **Datos estadisticos de forma manual**
@@ -155,15 +155,15 @@ for valor in signal[:, 0]:
     sum_a += (valor - media_manual)**2
 desviacion_manual = (sum_a / cont)**0.5
 ```
-En sa `sum_a` se calcula la desviación para cada dato respecto a la media: `(valor - media_manual)`. Luego, lo eleva al cuadrado y lo va acumulando en sum_a y al final divide entre cont (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
+En sa `sum_a` se calcula la desviación para cada dato respecto a la media: `(valor - media_manual)`. Luego, lo eleva al cuadrado y lo va acumulando en `sum_a` y al final divide entre `cont` (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
 
 ```
 coef = (desviacion_manual / abs(media_manual)) * 100 
 ```
-Se usa abs(media_manual) para evitar signo negativo si la media fuera negativa y se multiplica por 100 para expresarlo en porcentaje.
-**1283.007290821395**
+Se usa `abs(media_manual)` para evitar signo negativo si la media fuera negativa y se multiplica por 100 para expresarlo en porcentaje.
+**12.83%**
 
-Luego, se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con plt.bar. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
+Luego, se vuelve a calcular el histograma donde definimos el número de bins y límites, contamos ocurrencias por bin y graficamos con `plt.bar`. Además, se imprimen valor mínimo, valor máximo y ancho de bin.
 
 ```
 amplitudes_senal = signal[:,0]
@@ -186,7 +186,7 @@ for amplitud in amplitudes_senal:
 centros_bin = [min_amplitud + (i + 0.5) * ancho_bin for i in range(num_bins)]
 ```
 En esta parte se inicializan las frecuencias con ceros `([0] * num_bins)`.
-Y para cada valor de la señal (amplitud): Recorre los bins y pregunta: ¿cae en este intervalo? Si sí → suma 1 a ese bin.
+Y para cada valor de la señal (amplitud): Recorre los bins y pregunta: ¿cae en este intervalo? Si sí, suma 1 a ese bin.
 Y al final `frecuencias_manual[i]` tiene cuántos datos cayeron en cada intervalo.
 Y la función `centros_bin` hace el calculo de los puntos medios del bin para que al graficarlos, estos queden bien centrados.
 ```
@@ -214,7 +214,7 @@ print("Ancho de cada bin:", ancho_bin)
 **Ancho de cada bin: 0.044361718276483185**
 
 
-Para la funcion de probabilidad se normaliza cada bin (en lugar de mostrar el conteo absoluto de datos en ese intervalo, lo ajustasmos para que represente una frecuencia relativa) como frecuencia / (N * ancho_bin) y se grafica.
+Para la funcion de probabilidad se normaliza cada bin (en lugar de mostrar el conteo absoluto de datos en ese intervalo, lo ajustasmos para que represente una frecuencia relativa) como `frecuencia / (N * ancho_bin)` y se grafica.
 ```
 N_muestras = len(datos)
 ancho_bin_prob = ancho_bin
