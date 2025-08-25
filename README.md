@@ -485,7 +485,7 @@ Se uso random para tener valores aleatorios de forma que el impulso pueda ser ne
 
 
 **c.Contaminar la señal con ruido artefacto y medir el SNR**  
-El ruido artefacto es una distorsión no deseada que aparece en una señal debido a fallos técnicos, interferencias ambientales o procesos biológicos, y que no forma parte de la información original. Puede surgir por errores en sensores, movimientos musculares en señales médicas, interferencias electromagnéticas, o problemas de muestreo digital, y afecta la calidad y precisión del análisis. A diferencia de otros tipos de ruido, los artefactos suelen tener patrones específicos o repentinos que pueden confundirse con datos reales, por lo que se utilizan técnicas de filtrado, separación de fuentes o detección automática para eliminarlos o reducir su impacto. En este caso nosotros tomamos la red eléctrica en Colombia que esta a 60 Hz como ruido artefacto.
+El ruido artefacto es una distorsión no deseada que aparece en una señal debido a fallos técnicos, interferencias ambientales o procesos biológicos, y que no forma parte de la información original. Puede surgir por errores en sensores, movimientos musculares en señales médicas, interferencias electromagnéticas, o problemas de muestreo digital, y afecta la calidad y precisión del análisis. A diferencia de otros tipos de ruido, los artefactos suelen tener patrones específicos o repentinos que pueden confundirse con datos reales, por lo que se utilizan técnicas de filtrado, separación de fuentes o detección automática para eliminarlos o reducir su impacto. En este caso tomamos la red eléctrica en Colombia que esta a 60 Hz como ruido artefacto.
 
      frecuencia_interferencia = 60
      amplitud_interferencia = (np.max(senal) - np.min(senal)) * 0.1 
