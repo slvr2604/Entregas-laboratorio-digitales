@@ -76,11 +76,11 @@ print("Media:", media)
 print("Desviación estándar:", desviacion)
 print("Coeficiente de variación:", coef_var)
 ```
-La media que es el promedio de un conjunto de números, se calcula sumando todos los valores y dividiendo entre la cantidad de elementos. Para la señal nos dio un valor de **-0.014106341399538005**
+La media que es el promedio de un conjunto de números, se calcula sumando todos los valores y dividiendo entre la cantidad de elementos; sirviendo como referencia de la tendencia central de los datos. Para la señal nos dio un valor de **-0.014106341399538005**  
 
 La desviación estándar es una medida que indica cuánto se dispersan o se alejan los datos respecto a la media. Dio como resultado **0.18098538862422828**
 
-El coeficiente de variación (CV) es una medida estadística que indica el grado de dispersión de los datos en relación con la media. Se expresa como un porcentaje y dio como resultado **12.83%**
+El coeficiente de variación (CV) es una medida estadística que relaciona la desviación estándar con la media y es útil para comparar la variabilidad entre señales de distinta escala. Se expresa como un porcentaje y dio como resultado **12.83%**  
 
 
 Luego procedemos a hacer el histograma que es una representación gráfica que muestra cómo se distribuyen los datos de un conjunto en intervalos o rangos de valores llamados bins y se grafica como barras centradas en cada bin.
@@ -118,12 +118,12 @@ plt.show()
 
 La función del `density = True` es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.  
 
-La curtosis es una medida estadística que describe la forma de la distribución de los datos, especialmente cuánto se concentran en los extremos (colas) en comparación con una distribución normal.
+La **curtosis** mide qué tan altos o bajos son los picos,o que tan plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.  
 ```
 from scipy.stats import kurtosis
 curtosis_scipy = kurtosis(datos, fisher=True)  
 ```
-**Curtosis: 21.850227609596285**
+Curtosis: **21.850227609596285**
 
 
 `fisher=True` entrega el exceso de curtosis (se resta 3).
@@ -150,7 +150,7 @@ for valor in signal[:, 0]:
     sum_a += (valor - media_manual)**2
 desviacion_manual = (sum_a / cont)**0.5
 ```
-En sa `sum_a` se calcula la desviación para cada dato respecto a la media: `(valor - media_manual)`. Luego, lo eleva al cuadrado y lo va acumulando en `sum_a` y al final divide entre `cont` (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
+En `sum_a` se calcula la desviación para cada dato respecto a la media: `(valor - media_manual)`. Luego, lo eleva al cuadrado y lo va acumulando en `sum_a` y al final divide entre `cont` (esto la hace poblacional). El valor de la desviación será **0.18098538862422764**
 
 ```
 coef = (desviacion_manual / abs(media_manual)) * 100 
@@ -343,17 +343,7 @@ La gráfica muestra la señal que se obtuvo con el DAQ y que luego se trabajó e
 
     curt = kurtosis(senal)
     print(f"Curtosis de la señal: {curt:.4f}")
-En este apartado se calcularon estadísticas importantes de la señal.
-
-La **media** muestra el valor promedio, sirviendo como referencia de la tendencia central de los datos.
-
-La **desviación estándar** refleja qué tanto se alejan los valores respecto al promedio; si es grande significa que hay más variación.
-
-El **coeficiente de variación** relaciona la desviación estándar con la media y es útil para comparar la variabilidad entre señales de distinta escala.
-
-La **curtosis** mide qué tan altos o bajos son los picos,o que tan plana es la distribución de los datos, mostrando si predominan valores extremos o si los datos se agrupan más cerca del promedio.
-
-
+En este apartado se calcularon estadísticas importantes de la señal la **media** , la **desviación estándar**, el **coeficiente de variación** y la **curtosis** con las funciones usadas en la parte A.  
 
  **Datos estadisticos de la parte B adquiridos con el DAQ:**
 
