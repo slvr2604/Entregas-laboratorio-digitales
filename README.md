@@ -256,13 +256,11 @@ Y observamos que corresponde con la curtosis realizada gon funciones.
 La curtosis es: **21.850227609596285**.
 
 En conclusión, la media refleja el nivel promedio de la señal en milivoltios (mV). En el ECG, suele estar alrededor de cero porque se registran diferencias de potencial eléctrico, lo que indica que el análisis fue correcto. La desviación estandar nos muestra cuánto se dispersan los valores respecto a la media. En este caso nos mostró un valor bajo indicando estabilidad de la señal.  
-El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10–15%), lo que en este caso nos indica que la señal es estable y repetitiva.
+El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10–15%), lo que en este caso nos indica que la señal es estable y repetitiva.  
 
-El histograma permitió ver la distribución de amplitudes. 
+El histograma permitió ver la distribución de amplitudes y la curtosis al ser positiva, significa que los picos son más agudos y concentrados (lo esperado en un ECG con complejos QRS bien definidos).  
 
-La curtosis al ser positiva, significa que los picos son más agudos y concentrados (lo esperado en un ECG con complejos QRS bien definidos). 
-
-Los resultados sugieren que la señal tiene un comportamiento estable, con baja dispersión, distribución centrada alrededor de cero y picos característicos. Esto confirma que los cálculos reflejan una señal fisiológica regular y sin alteraciones mayores en la calidad del registro.
+Los resultados sugieren que la señal tiene un comportamiento estable, con baja dispersión, distribución centrada alrededor de cero y picos característicos. Esto confirma que los cálculos reflejan una señal fisiológica regular y sin alteraciones mayores en la calidad del registro. Aparte se logra ver que tanto los datos estadisticos con funciones y hechos de forma manual dan valores iguales o demasiado similares.     
 
 A su vez, la señal ECG del sujeto b001 en reposo muestra un ritmo cardíaco regular y fisiológicamente normal. El análisis estadístico confirma esta estabilidad al evidenciar baja variabilidad relativa y distribución esperada de la amplitud.
 
