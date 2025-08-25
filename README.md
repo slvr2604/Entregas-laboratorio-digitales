@@ -116,9 +116,7 @@ plt.show()
 ```
 <img width="996" height="394" alt="image" src="https://github.com/user-attachments/assets/2db437da-29cb-48c6-a535-a14bcb719be8" />
 
-La función del `density = True` es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.
-
-Ahora se calcula la curtosis (con SciPy)  
+La función del `density = True` es hacer que en lugar de mostrar los conteos absolutos de cada intervalo (bin), el área total del histograma sea igual a 1.  
 
 La curtosis es una medida estadística que describe la forma de la distribución de los datos, especialmente cuánto se concentran en los extremos (colas) en comparación con una distribución normal.
 ```
