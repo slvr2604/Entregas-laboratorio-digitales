@@ -1,7 +1,7 @@
 # Entregas-laboratorio-digitales
-Lina María Cortés Almonacid
-María Alejandra Torres Cardenas
-Silvia Lorena Vargas Rueda
+Lina María Cortés Almonacid  
+María Alejandra Torres Cardenas  
+Silvia Lorena Vargas Rueda  
 
 
 
