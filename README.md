@@ -367,7 +367,7 @@ En este apartado se calcularon estadísticas importantes de la señal la **media
   
 Desviacion estandar: 0.18098538862422828
 
-Coeficiente de variacion (REVISAR): 1283.007290821387
+Coeficiente de variacion: 1283.007290821387
 
 Curtosis calculada con SciPy: 19.1574
 
