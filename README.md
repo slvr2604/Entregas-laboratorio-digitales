@@ -260,7 +260,7 @@ Los resultados sugieren que la señal tiene un comportamiento estable, con baja 
 A su vez, la señal ECG del sujeto b001 en reposo muestra un ritmo cardíaco regular y fisiológicamente normal. El análisis estadístico confirma esta estabilidad al evidenciar baja variabilidad relativa y distribución esperada de la amplitud.
 
 ### Parte B:   
-Se generó una señal fisiológica del mismo tipo de la usada en la parte A usando el generador de señales biológicas junto con el *NI DAQ* y el osciloscopio para verificar que la señal diera de la manera adecuada. Cuando se visualizo que la gráfica estaba bien, se hizo un código en phyton para poder graficar la señal eb colab por medio de un documento .txt
+Se generó una señal fisiológica del mismo tipo de la usada en la parte A usando el generador de señales biológicas junto con el *NI DAQ* y el osciloscopio para verificar que la señal diera de la manera adecuada. Cuando se visualizo que la gráfica estaba bien, se hizo un código en phyton para poder graficar la señal en colab por medio de un documento .txt
 
 
     !pip install nidaqmx
@@ -546,5 +546,4 @@ La señal ECG mostrada evidencia cómo la interferencia de 60 Hz proveniente de 
 
 Cada tipo de ruido se gráfica por separado para visualizar su impacto en la señal ECG. Esto permite comparar cómo cada tipo de ruido afecta la forma de la onda. Por ejemplo, el ruido gaussiano añade fluctuaciones suaves, mientras que el ruido de impulso introduce picos abruptos. La graficación de estas señales es crucial para entender el efecto del ruido y para diseñar técnicas de filtrado adecuadas.  
 
-En conclusión, 
-
+En conclusión, esta práctica permitió integrar el análisis estadístico, la adquisición experimental y la simulación de ruido sobre una señal ECG para evaluar su comportamiento fisiológico y su calidad. Se trabajó con una señal real (registro b001 de PhysioNet) y otra adquirida mediante el NI DAQ, comparando sus características mediante datos estadisticos como la media, la desviación estándar, el coeficiente de variación y la curtosis. Los resultados mostraron que la señal original es estable y fisiológicamente coherente, mientras que la adquirida presenta mayor variabilidad, lo que refleja condiciones más reales. Además, se simularon distintos tipos de ruido (gaussiano, impulso y artefacto) para observar su impacto sobre la señal y calcular la relación señal-ruido (SNR), lo que permitió entender cómo las interferencias afectan la lectura. La práctica evidenció la importancia de combinar estadística, procesamiento de señales y simulación para validar registros médicos y anticipar problemas en entornos clínicos.
