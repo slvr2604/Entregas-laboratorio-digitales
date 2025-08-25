@@ -64,7 +64,7 @@ plt.show()
 ```
 <img width="1012" height="394" alt="17560010329671912406512794671258" src="https://github.com/user-attachments/assets/3ed1fd3b-c508-42b4-9c1b-a6e794e96cfe" />
 
-**Datos estadisticos con funciones**
+**Datos estadísticos con funciones**
 
 ```
 datos = signal[:,0]
