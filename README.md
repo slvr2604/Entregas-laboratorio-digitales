@@ -209,7 +209,7 @@ print("Ancho de cada bin:", ancho_bin)
 **Ancho de cada bin: 0.044361718276483185**
 
 
-Para la funcion de probabilidad se normaliza cada bin (en lugar de mostrar el conteo absoluto de datos en ese intervalo, lo ajustasmos para que represente una frecuencia relativa) como `frecuencia / (N * ancho_bin)` y se grafica.
+Para la funcion de probabilidad se normaliza cada bin (en lugar de mostrar el conteo absoluto de datos en ese intervalo, lo ajustamos para que represente una frecuencia relativa) como `frecuencia / (N * ancho_bin)` y se grafica.
 ```
 N_muestras = len(datos)
 ancho_bin_prob = ancho_bin
@@ -245,7 +245,7 @@ En primer lugar se calcula la media de los datos.
 En `m2` se calcula la varianza poblacional, que es la fórmula utilizada en el código y en `m4` se mide qué tanto pesan los valores extremos en la distribución, que utiliza la misma fórmula de varianza poblacional pero usando una potencia de 4.
 Finalmente se calcula la curtosis en exceso, que es la fórmula expresada en el código. 
 
-Y observamos que corresponde con la curtosis realizada gon funciones.
+Y observamos que corresponde con la curtosis realizada con funciones.
 
 
 La curtosis es: **21.850227609596285**.
@@ -255,7 +255,7 @@ El coeficiente de variación en un ECG limpio, debe ser relativamente bajo (<10�
 
 El histograma permitió ver la distribución de amplitudes y la curtosis al ser positiva, significa que los picos son más agudos y concentrados (lo esperado en un ECG con complejos QRS bien definidos).  
 
-Los resultados sugieren que la señal tiene un comportamiento estable, con baja dispersión, distribución centrada alrededor de cero y picos característicos. Esto confirma que los cálculos reflejan una señal fisiológica regular y sin alteraciones mayores en la calidad del registro. Aparte se logra ver que tanto los datos estadisticos con funciones y hechos de forma manual dan valores iguales o demasiado similares.     
+Los resultados sugieren que la señal tiene un comportamiento estable, con baja dispersión, distribución centrada alrededor de cero y picos característicos. Esto confirma que los cálculos reflejan una señal fisiológica regular y sin alteraciones mayores en la calidad del registro. Aparte se logra ver que tanto los datos estadísticos con funciones y hechos de forma manual dan valores iguales o demasiado similares.     
 
 A su vez, la señal ECG del sujeto b001 en reposo muestra un ritmo cardíaco regular y fisiológicamente normal. El análisis estadístico confirma esta estabilidad al evidenciar baja variabilidad relativa y distribución esperada de la amplitud.
 
